@@ -1,1 +1,3 @@
+# Node.js dependencies in any directory
 node_modules
+.env
