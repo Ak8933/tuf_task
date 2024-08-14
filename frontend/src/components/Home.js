@@ -1,35 +1,51 @@
 import React, { useState } from 'react';
-import Banner from './Banner';
+import axios from 'axios';
 
-function App() {
-    // Initialize state to track the switch
-    const [isSwitchOn, setIsSwitchOn] = useState(false);
+const Dashboard = () => {
+  const [description, setDescription] = useState('');
+  const [timerSettings, setTimerSettings] = useState(0);
+  const [link, setLink] = useState('');
 
-    // Handle switch toggle
-    const handleSwitchChange = (event) => {
-        setIsSwitchOn(event.target.checked);
-    };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post('http://localhost:5000/banner', {
+      description,
+      timer_settings: timerSettings,
+      link
+    })
+    .then(response => alert(response.data.message))
+    .catch(error => console.error('Error submitting form:', error));
+  };
 
-    return (
-        <>
-            <div className="form-check form-switch ">
-                <input
-                    className="form-check-input"
-                    type="checkbox"
-                    role="switch"
-                    id="flexSwitchCheckDefault"
-                    checked={isSwitchOn}
-                    onChange={handleSwitchChange}
-                />
-                <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
-                    Banner Visibility
-                </label>
-            </div>
-            {isSwitchOn && <Banner/>}
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Description:</label>
+        <input
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Timer Settings (seconds):</label>
+        <input
+          type="number"
+          value={timerSettings}
+          onChange={(e) => setTimerSettings(Number(e.target.value))}
+        />
+      </div>
+      <div>
+        <label>Link:</label>
+        <input
+          type="text"
+          value={link}
+          onChange={(e) => setLink(e.target.value)}
+        />
+      </div>
+      <button type="submit">Save</button>
+    </form>
+  );
+};
 
-        </>
-
-    );
-}
-
-export default App;
+export default Dashboard;

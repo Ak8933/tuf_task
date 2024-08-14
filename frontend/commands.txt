@@ -2,3 +2,5 @@ npm i bootstrap react-router-dom
 npm install tailwindcss postcss autoprefixer
 npm install --save-dev ajv@^7 
 npm i bootstrap@5.3.3
+npm install axios
+npm install react-countdown --save

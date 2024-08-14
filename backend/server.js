@@ -106,6 +106,6 @@ app.delete('/banner/:id', (req, res) => {
 });
 
 // Start the server
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+app.listen(5000, () => {
+    console.log('Server is running on port 5000');
 });
