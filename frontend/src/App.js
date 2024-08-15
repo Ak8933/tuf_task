@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import React, { useState } from 'react';
 import Banner from './components/Banner';
 
-
 function App() {
   const [isSwitchOn, setIsSwitchOn] = useState(false);
 
@@ -14,6 +13,7 @@ function App() {
 
   return (
     <div>
+      <Navbar />
       <div className="form-check form-switch">
         <input
           className="form-check-input"
@@ -27,7 +27,8 @@ function App() {
           Banner Visibility
         </label>
       </div>
-      {isSwitchOn && <Banner isVisible={isSwitchOn} />}
+
+      <Banner isVisible={isSwitchOn} />
       <Home />
     </div>
   );

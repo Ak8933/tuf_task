@@ -6,15 +6,18 @@ const Banner = ({ isVisible }) => {
   const [timer, setTimer] = useState(0);
 
   useEffect(() => {
+    let interval;
+
     if (isVisible) {
+      // Fetch banner data and initialize the timer
       axios.get('http://localhost:5000/banner')
         .then(response => {
           const data = response.data[0]; // Assuming you want the first banner
           setBanner(data);
           setTimer(data.timer_settings);
 
-          // Countdown Timer
-          const interval = setInterval(() => {
+          // Start countdown timer
+          interval = setInterval(() => {
             setTimer(prev => {
               if (prev <= 0) {
                 clearInterval(interval);
@@ -23,11 +26,21 @@ const Banner = ({ isVisible }) => {
               return prev - 1;
             });
           }, 1000);
-
-          return () => clearInterval(interval);
         })
         .catch(error => console.error('Error fetching banner:', error));
+    } else {
+      // If not visible, clear interval if it's set
+      if (interval) {
+        clearInterval(interval);
+      }
     }
+
+    // Cleanup function to clear interval when component unmounts or isVisible changes
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
   }, [isVisible]);
 
   if (!isVisible || !banner) return null;
