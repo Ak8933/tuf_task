@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './Home.css'; // Ensure the correct CSS file is imported
 
 const Dashboard = () => {
   const [description, setDescription] = useState('');
@@ -18,33 +19,37 @@ const Dashboard = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Description:</label>
-        <input
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Timer Settings (seconds):</label>
-        <input
-          type="number"
-          value={timerSettings}
-          onChange={(e) => setTimerSettings(Number(e.target.value))}
-        />
-      </div>
-      <div>
-        <label>Link:</label>
-        <input
-          type="text"
-          value={link}
-          onChange={(e) => setLink(e.target.value)}
-        />
-      </div>
-      <button type="submit">Save</button>
-    </form>
+    <div className="dashboard-container">
+      <h2 className="heading">Update Banner</h2>
+      <form onSubmit={handleSubmit} className="dashboard-form">
+        <div className="form-group">
+          <label>Description:</label>
+          <input
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Timer Settings (seconds):</label>
+          <input
+            type="number"
+            value={timerSettings}
+            onChange={(e) => setTimerSettings(Number(e.target.value))}
+          />
+        </div>
+        <div className="form-group">
+          <label>Link:</label>
+          <input
+            type="text"
+            value={link}
+            onChange={(e) => setLink(e.target.value)}
+          />
+        </div>
+       
+        <button type="submit">Save</button>
+      </form>
+    </div>
   );
 };
 

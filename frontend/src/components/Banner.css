@@ -1,0 +1,39 @@
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Adjust as needed */
+    overflow: hidden; /* Hide any overflow from the image */
+  }
+  
+  .banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the container */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Place the image behind the overlay */
+  }
+  
+  .banner-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+    border-radius: 10px; /* Rounded corners for the overlay */
+    z-index: 1; /* Ensure the overlay is on top of the image */
+  }
+  
+  .banner-overlay h1 {
+    margin: 0;
+  }
+  
+  .timer {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+  

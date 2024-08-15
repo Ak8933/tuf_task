@@ -6,6 +6,7 @@ import Banner from './components/Banner';
 
 function App() {
   const [isSwitchOn, setIsSwitchOn] = useState(false);
+  const [isBannerVisible, setIsBannerVisible] = useState(true);
 
   const handleSwitchChange = (event) => {
     setIsSwitchOn(event.target.checked);
@@ -14,7 +15,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <div className="form-check form-switch">
+      <div className="form-check form-switch main">
         <input
           className="form-check-input"
           type="checkbox"
@@ -28,7 +29,7 @@ function App() {
         </label>
       </div>
 
-      <Banner isVisible={isSwitchOn} />
+      <Banner isVisible={isSwitchOn} setIsVisible={setIsBannerVisible}/>
       <Home />
     </div>
   );

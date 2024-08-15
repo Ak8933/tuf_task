@@ -48,7 +48,7 @@ app.post('/banner', (req, res) => {
 // Route to get all banners
 app.get('/banner', (req, res) => {
     // SQL query to select all banners from the database
-    const query = 'SELECT * FROM banner_data';
+    const query = 'SELECT * FROM banner_data ORDER BY created_at DESC LIMIT 1';
     db.query(query, (err, results) => {
         if (err) {
             console.error('Error executing query:', err);
