@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:5000/banner', {
+    axios.post('https://tuf-task-backend-fq5o.onrender.com/banner', {
       description,
       timer_settings: timerSettings,
       link
