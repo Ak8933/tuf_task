@@ -11,7 +11,7 @@ const Banner = ({ isVisible, setIsVisible }) => {
 
     if (isVisible) {
       // Fetch banner data and initialize the timer
-      axios.get('http://localhost:5000/banner')
+      axios.get('https://tuf-task-backend-fq5o.onrender.com/banner')
         .then(response => {
           console.log('API Response:', response.data); // Log response data
           if (Array.isArray(response.data) && response.data.length > 0) {
